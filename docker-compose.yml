@@ -1,0 +1,26 @@
+version: "3"
+
+services:
+  api:
+    image: covid:local
+    volumes:
+      - .:/app/
+    environment:
+      - ENV=docker-compose
+      - DB_DRIVER=mysql+pymysql
+      - DB_NAME=shop
+      - DB_HOST=mysql
+      - DB_USERNAME=root
+      - DB_PASSWORD=root
+      - PROJECT_ID=Local
+      - SHORT_SHA=local
+    ports:
+      - 8080:8080
+  mysql:
+    image: us.gcr.io/kubernetes-production-201717/mariadb:10.2.11
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+    ports:
+      - 3306:3306
+    volumes:
+      - ./data/mysql:/var/lib/mysql
