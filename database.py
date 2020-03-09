@@ -1,5 +1,4 @@
 import os
-import urllib.parse
 
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
@@ -13,7 +12,7 @@ logger = get_logger()
 if os.getenv("DB_DRIVER") == "mysql+pymysql":
     logger.info("Using mysql SQLALCHEMY_DATABASE_URL")
     DB_DRIVER = os.getenv("DB_DRIVER")
-    DB_HOST = urllib.parse.quote(os.getenv("DB_HOST"))
+    DB_HOST = os.getenv("DB_HOST")
     DB_NAME = os.getenv("DB_NAME")
     DB_USERNAME = os.getenv("DB_USERNAME")
     DB_PASSWORD = os.getenv("DB_PASSWORD")
