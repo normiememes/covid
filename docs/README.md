@@ -20,6 +20,8 @@ docker-compose up -d
 gunicorn main:api -c gunicorn_config.py
 ```
 
+Visit [localhost:8080/docs](localhost:8080/docs)
+
 #### Test
 ```bash
 pytest tests -s --cov=. --cov-report html:./htmlcov --cov-fail-under 50 --log-cli-level DEBUG
